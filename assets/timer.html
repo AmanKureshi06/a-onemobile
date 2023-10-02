@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Launch Countdown</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Center the countdown and additional text vertically */
+            height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif; /* Set the font to Montserrat */
+            background-image: url('/assets/img/team/aonemobile_header.jpg'); /* Set your image URL here */
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat; /* Prevent image repetition */
+        }
+
+        h1 {
+            font-size: 36px; /* Set the font size for the heading */
+            font-weight: bold;
+            margin-bottom: 20px; /* Add margin below the heading */
+            color: #fff; /* Set the text color to white */
+        }
+
+        #countdown {
+            display: flex;
+            align-items: center;
+            font-size: 36px; /* Increase the font size for the entire countdown */
+            font-weight: bold;
+        }
+
+        .countdown-block {
+            margin: 0 15px; /* Increase the margin */
+            padding: 20px; /* Increase the padding */
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+            color: #fff; /* Set the text color to a darker color */
+            border-radius: 10px; /* Increase the border-radius for rounded corners */
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 28px; /* Increase the font size for each time unit */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Box shadow for glassy effect */
+        }
+
+        .countdown-label {
+            font-size: 20px; /* Increase the font size for labels */
+        }
+
+        .additional-text {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px; /* Add margin to separate the countdown and text */
+            color: #fff; /* Set the text color to white */
+        }
+
+        footer {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 20px; /* Add margin to separate the content and footer */
+            color: #fff; /* Set the text color to white */
+        }
+    </style>
+</head>
+<body>
+    <h1>Website Launching on December 31st, 2023!</h1>
+    
+    <div id="countdown">
+        <div class="countdown-block">
+            <div id="days">0</div>
+            <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-block">
+            <div id="hours">0</div>
+            <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-block">
+            <div id="minutes">0</div>
+            <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-block">
+            <div id="seconds">0</div>
+            <div class="countdown-label">Seconds</div>
+        </div>
+    </div>
+    
+    <div class="additional-text">
+        We're excited to announce that our website is currently under construction and will be launching on December 31st.
+        <br><br>
+        We're working diligently to create an amazing online experience for you.
+        <br><br>
+        Please check back soon for our grand unveiling and join us in celebrating the new year with our brand-new website!
+        <br><br>
+        Thank you for your patience 😊.
+    </div>
+    
+    <footer>
+        <strong>
+        <br><br><br> © 2023 A-One Mobile. All rights reserved<br><br>
+        Designed and Managed by Aman Kureshi
+        </strong>
+    </footer>
+
+    <script>
+        // Set the target date (December 31st)
+        var targetDate = new Date('2023-12-31T00:00:00').getTime();
+
+        // Update the countdown every second
+        var countdownInterval = setInterval(function() {
+            var currentDate = new Date().getTime();
+            var timeLeft = targetDate - currentDate;
+
+            // Calculate days, hours, minutes, and seconds
+            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Update the countdown blocks
+            document.getElementById('days').innerHTML = days;
+            document.getElementById('hours').innerHTML = hours;
+            document.getElementById('minutes').innerHTML = minutes;
+            document.getElementById('seconds').innerHTML = seconds;
+
+            // Check if the countdown has reached zero
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "Website is now live!";
+            }
+        }, 1000); // Update every 1 second
+    </script>
+</body>
+</html>
