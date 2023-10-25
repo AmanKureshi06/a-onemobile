@@ -307,7 +307,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="contactForm" name="contactForm" method="post" action="process_form.php">
+                    <form id="contactForm" name="contactForm" method="post">
                         <div class="row" data-aos="fade-up" data-aos-duration="1050" data-aos-delay="50">
                             <div class="col-md-6">
                                 <div class="form-group mb-3"><input class="form-control" type="text" id="name" name="name" placeholder="Your Name *" required=""><small class="form-text text-danger flex-grow-1 lead"></small></div>
@@ -319,14 +319,61 @@
                             </div>
                             <div class="w-100"></div>
                             <div class="col-lg-12 text-center">
-                                <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                                <div id="success"></div>
+                                <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="button">Send Message</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+        
+            <script>
+                document.getElementById('sendMessageButton').addEventListener('click', function () {
+                    // Get user input
+                    var name = document.getElementById('name').value;
+                    var email = document.getElementById('email').value;
+                    var phone = document.getElementById('phone').value;
+                    var message = document.getElementById('message').value;
+        
+                    // Gmail SMTP settings
+                    var smtpConfig = {
+                        host: 'smtp.gmail.com',
+                        port: 587, // Use 465 for SSL
+                        secure: false, // true for 465, false for other ports
+                        auth: {
+                            user: 'amankureshi060906@gmail.com', // Your Gmail email address
+                            pass: 'nsvodkalalxfjmjt' // Your Gmail password or App Password
+                        }
+                    };
+        
+                    // Nodemailer library for sending email
+                    var nodemailer = require('nodemailer');
+                    var transporter = nodemailer.createTransport(smtpConfig);
+        
+                    // Email content
+                    var mailOptions = {
+                        from: email,
+                        to: 'amankureshi060906@gmail.com', // Recipient email address
+                        subject: 'Mail From Website',
+                        text: 'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\nMessage: ' + message
+                    };
+        
+                    // Send email
+                    transporter.sendMail(mailOptions, function (error, info) {
+                        if (error) {
+                            console.log('Failed to send:', error);
+                            alert('Oops! Something went wrong. Please try again later.');
+                        } else {
+                            console.log('Sent successfully:', info.response);
+                            alert('Your message has been sent!');
+                        }
+                    });
+                });
+            </script>
         </div>
     </section>
+
+<!--*******************************************************************************************************************************-->
     <footer class="footer">
         <div class="footer__addr">
           <h1 class="footer__logo" class="left-justified" style="user-select: none;"  data-aos="fade-up" data-aos-duration="1050" data-aos-delay="50">A One Mobile</h1>
