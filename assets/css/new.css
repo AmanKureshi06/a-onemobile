@@ -405,7 +405,7 @@ html {
 html.smooth-scroll {
   scroll-behavior: smooth;
   scroll-behavior: cubic-bezier(0.5, 0, 0.75, 0.5); /* Adjust the cubic-bezier function */
-  scroll-behavior: 1ms; /* Increase the duration (e.g., 1500ms for a slower scroll) */
+  scroll-behavior: 1500ms; /* Increase the duration (e.g., 1500ms for a slower scroll) */
 }
 
 /*Margin of Timeline*/
