@@ -323,6 +323,8 @@ footer { text-decoration: none;}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
+
+/*<button class="back-to-top" type="button"></button>*/
 button.back-to-top{
   margin: 0 !important;
   padding: 0 !important;
